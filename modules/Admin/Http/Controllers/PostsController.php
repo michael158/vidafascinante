@@ -16,12 +16,10 @@ class PostsController extends Controller
 {
 
     protected $validator;
-    private $postSearchService;
 
-    public function __construct(PostValidator $validator, PostsSearchService $postSearchService)
+    public function __construct(PostValidator $validator)
     {
         $this->validator = $validator;
-        $this->postSearchService = $postSearchService;
     }
 
     public function index()
@@ -40,6 +38,7 @@ class PostsController extends Controller
                 $model = new Post();
                 $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
                 $model->newPost($request->all());
+
             } catch (ValidatorException $e) {
                 $errors = $e->getMessageBag()->toArray();
                 return view('admin::posts.create', compact('tags', 'categories', 'request'))->with(['errors' => $errors]);
@@ -62,12 +61,6 @@ class PostsController extends Controller
                 $data['title'] = $data['title'] == $post->title ? $data['title'] . $id : $data['title'];
                 $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
                 $mPost->editPost($request->all(), $post);
-
-                // atualiza o documento no elasticsearch//
-                if($post->active){
-                    $post = Post::find($id);
-                    $this->postSearchService->update($post, $id);
-                }
             } catch (ValidatorException $e) {
                 $errors = $e->getMessageBag()->toArray();
                 return view('admin::posts.edit', compact('post', 'tags', 'categories', 'request'))->with(['errors' => $errors]);
@@ -83,7 +76,6 @@ class PostsController extends Controller
         try {
             $mPost = Post::find($id);
             $mPost->delete();
-//            $this->postSearchService->destroy($id);
         } catch (\Exception $e) {
             return redirect('admin/posts')->with('message', ['content' => 'Não foi possivel excluir o registro!', 'type' => 'danger']);
         }

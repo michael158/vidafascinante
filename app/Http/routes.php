@@ -14,14 +14,10 @@ Route::get('/admin', function(){
     return Redirect::to('admin');
 });
 
-Route::get('/migrate-elasticsearch', 'MigrateElasticSearchController@migrate');
-
 Route::post('/fix-resumes', 'FixController@fixResume');
 Route::post('/fix-images', 'FixController@fixImages');
 Route::post('/fix-https', 'FixController@fixHttps');
 
 
-
-Route::get('/search', 'MigrateElasticSearchController@migrate');
 
 
