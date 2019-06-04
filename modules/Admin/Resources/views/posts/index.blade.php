@@ -80,4 +80,6 @@
 @section('javascript')
     @include('admin::layouts.baseScript')
     @include('admin::layouts.modal-delete')
+
+
 @endsection

@@ -19,42 +19,6 @@
                             </script>
                         </div>
                     @endif
-                    {{--<div class="row">--}}
-                        {{--<div class="col-md-8">--}}
-
-                            {{--<center>--}}
-                                {{--<sync-loader v-if="!loaded" style="margin-bottom: 100px; margin-top: 100px" color="#0D9890"></sync-loader>--}}
-                            {{--</center>--}}
-
-                            {{--<div class="post" v-for="post in posts.rows">--}}
-                                {{--<div class="panel panel-default">--}}
-                                    {{--<div class="panel-body">--}}
-                                        {{--<div class="title text-center">--}}
-                                  {{--<span class="categorie">--}}
-                                    {{--{{ post.Category.name }}--}}
-                                  {{--</span>--}}
-                                            {{--<h2><a :href="post.slug">{{ post.title }}</a></h2>--}}
-                                            {{--<span class="date">{{ formatDate(post.activated_at) }}</span>--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="post-image">--}}
-                                            {{--<a :href="post.slug"><img--}}
-                                                        {{--:src="'http://vidafascinante.com/uploads/posts/cover/' + post.image"--}}
-                                                        {{--class="img-responsive"></a>--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="content" v-html="post.resume">--}}
-
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<paginator :options="paginator"></paginator>--}}
-                        {{--</div>--}}
-
-                        {{--<side-right></side-right>--}}
-                    {{--</div>--}}
                     @foreach($posts as $post)
                         <div class="post">
                             <div class="panel panel-default">

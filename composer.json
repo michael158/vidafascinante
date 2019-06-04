@@ -10,8 +10,8 @@
         "pingpong/modules": "~2.0",
         "jenssegers/agent": "^2.3",
         "prettus/laravel-validation": "^1.1",
-        "guzzlehttp/guzzle": "~6.0",
-        "michaeldouglas/mservice": "^1.2"
+        "michaeldouglas/mservice": "^1.2",
+        "elasticsearch/elasticsearch": "^6.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -20,4 +20,11 @@ Route::post('/fix-https', 'FixController@fixHttps');
 
 
 
+Route::get('/search', '\Modules\Blog\Http\Controllers\SearchController@search');
 
+
+Route::get('/more-like-this', function (){
+    $instance = app()->make(\App\Services\SearchService\PostElasticSearchService::class);
+
+    return $instance->moreLikeThis(117);
+});

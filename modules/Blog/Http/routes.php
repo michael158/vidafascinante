@@ -11,4 +11,5 @@ Route::group(['prefix' => '', 'namespace' => 'Modules\Blog\Http\Controllers'], f
     Route::get('/contato/blog','ContatoController@index');
     Route::post('/contato/blog','ContatoController@index');
 
+
 });
